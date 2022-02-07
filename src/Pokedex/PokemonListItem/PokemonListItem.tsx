@@ -8,7 +8,7 @@ const PokemonListItem = ({ data }: any) => (
     </div>
     <div className={styles["item-content"]}>
       <div>
-        #{data.id} <strong>{data.name}</strong>
+        #{data.id} <strong>{data.names.find((o: any) => o.language.name === "en").name}</strong>
       </div>
       <div>Types: {data.types.map((t: any) => t.type.name).join(", ")}</div>
     </div>
