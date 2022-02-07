@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import Skeleton from "../Skeleton";
 import styles from "./PokemonListItem.module.css";
 
 const PokemonListItem = ({ name, url }: { name: string; url: string }) => {
@@ -12,7 +13,7 @@ const PokemonListItem = ({ name, url }: { name: string; url: string }) => {
   );
   return (
     <>
-      {!isLoading && (
+      {!isLoading ? (
         <Link to={`/details/${data.name}`} className={styles["item-container"]}>
           <div>
             <img
@@ -31,6 +32,14 @@ const PokemonListItem = ({ name, url }: { name: string; url: string }) => {
             </div>
           </div>
         </Link>
+      ) : (
+        <div className={styles["item-container"]}>
+          <Skeleton style={{ width: 96, height: 96 }} />
+          <div className={styles["item-content"]}>
+            <Skeleton style={{ width: 120, height: 21 }} />
+            <Skeleton style={{ width: 256, height: 21 }} />
+          </div>
+        </div>
       )}
     </>
   );
