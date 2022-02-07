@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-const PokemonList = lazy(() => import("./Pokedex/PokemonList"));
+const Pokedex = lazy(() => import("./Pokedex"));
 const PokemonDetails = lazy(() => import("./Pokedex/PokemonDetails"));
 
 const queryClient = new QueryClient();
@@ -14,7 +14,7 @@ const App = () => {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <Routes>
-            <Route element={<PokemonList />} path="/" />
+            <Route element={<Pokedex />} path="/" />
             <Route element={<PokemonDetails />} path="/details/:name" />
           </Routes>
         </QueryClientProvider>
