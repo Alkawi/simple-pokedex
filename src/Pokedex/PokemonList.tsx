@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
+import PokemonListItem from "./PokemonListItem/PokemonListItem";
 
 const PokemonList = () => {
   const { data, isLoading } = useQuery(
@@ -17,11 +17,7 @@ const PokemonList = () => {
   return (
     <>
       {!isLoading &&
-        data.results.map((e: any) => (
-          <div key={e.name}>
-            <Link to={`/details/${e.name}`}>{e.name}</Link>
-          </div>
-        ))}
+        data.results.map((e: any) => <PokemonListItem key={e.name} {...e} />)}
     </>
   );
 };
